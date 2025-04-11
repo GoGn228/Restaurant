@@ -1,0 +1,84 @@
+body {
+    font-family: "Cormorant Garamond", serif;
+    background-color: #f5efe6;
+    color: #3e2f2f;
+    margin: 0;
+    padding: 0;
+}
+
+/* Заголовок */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #b22222, #d43f3a);
+    color: white;
+    padding: 20px;
+}
+
+section {
+    padding: 20px;
+}
+
+.title {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 90px;
+}
+
+img {
+    width: 300px; /* Ширина */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+
+/* Кнопка заказа */
+.hero-btn {
+    text-align: right;
+}
+
+.order-btn {
+    background: linear-gradient(to right, #c0392b, #e67e22);
+    padding: 18px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: 0.3s;
+    border: none;
+    color: white;
+}
+
+.order-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #e67e22, #c0392b);
+}
+
+/* Сдержанный фон */
+.about {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 50px;
+    font-size: 19px;
+}
+
+.about img {
+    width: 45%;
+    border-radius: 12px;
+    margin: 15px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Контактный блок */
+.contact-info {
+    text-align: right;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 20px;
+    color: #7b4f3f;
+    text-align: left;
+}
