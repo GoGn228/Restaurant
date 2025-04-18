@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройка заказа – Шеф Иван</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/change.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="title">Настройка заказа в "Шеф Иван"</h1>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{{url_for('static', filename='images/logo.png') }}" alt="Логотип ресторана">
+            </div>
+        </div>
+    </header>
+
+    <main class="full-page-layout">
+        <section class="dish-info">
+            <h2>Название блюда</h2> <!-- Название блюда -->
+            <img src="placeholder.jpg" alt="Фото блюда"> <!-- Изображение -->
+            <p>Описание блюда...</p> <!-- Описание, которое ты добавишь -->
+        </section>
+
+        <section class="ingredients">
+            <h2>Выберите ингредиенты</h2>
+            <div class="ingredient-grid">
+                <label class="ingredient-option"><input type="checkbox"> Сыр <span>+2 BYN</span></label>
+                <label class="ingredient-option"><input type="checkbox"> Грибы <span>+1.5 BYN</span></label>
+                <label class="ingredient-option"><input type="checkbox"> Оливки <span>+1.5 BYN</span></label>
+                <label class="ingredient-option"><input type="checkbox"> Острый соус <span>+1 BYN</span></label>
+                <label class="ingredient-option"><input type="checkbox"> Томатный соус <span>+1 BYN</span></label>
+                <label class="ingredient-option"><input type="checkbox"> Бекон <span>+3 BYN</span></label>
+            </div>
+        </section>
+
+        <section class="quantity">
+            <h2>Количество порций</h2>
+            <div class="quantity-selector">
+                <button class="quantity-btn">−</button>
+                <input type="number" min="1" value="1">
+                <button class="quantity-btn">+</button>
+            </div>
+        </section>
+
+        <section class="price">
+            <h2>Итоговая стоимость: XX BYN</h2>
+            <form action="/menu/">
+                <button>Подтвердить заказ</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>📍 Адрес: ул. Центральная, 12, Минск</p>
+            <p>📞 Телефон: +375 29 123-45-67</p>
+            <p>📧 Email: info@shefivan.by</p>
+        </div>
+    </footer>
+</body>
+</html>

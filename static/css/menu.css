@@ -1,0 +1,90 @@
+body {
+    font-family: "Cormorant Garamond", serif;
+    background-color: #f5efe6;
+    color: #3e2f2f;
+    margin: 0;
+    padding: 0;
+}
+
+/* Заголовок */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #b22222, #d43f3a);
+    color: white;
+    padding: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.logo {
+    margin-left: auto; /* Перемещение логотипа вправо */
+}
+
+.logo img {
+    width: 90px;
+}
+
+/* Контейнер меню */
+.menu-layout {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+/* Меню слева */
+.menu-container {
+    flex: 2;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+/* Корзина справа */
+.cart-container {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопки */
+button {
+    background: linear-gradient(to right, #c0392b, #e67e22);
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.confirm-btn {
+    background: linear-gradient(to right, #c0392b, #e67e22);
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.confirm-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #e67e22, #c0392b);
+}
+

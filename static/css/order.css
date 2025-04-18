@@ -1,0 +1,77 @@
+body {
+    font-family: "Cormorant Garamond", serif;
+    background-color: #f5efe6;
+    color: #3e2f2f;
+    margin: 0;
+    padding: 0;
+}
+
+/* Заголовок */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #b22222, #d43f3a);
+    color: white;
+    padding: 20px;
+}
+
+section {
+    padding: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 90px;
+}
+
+/* Форма заказа */
+.order-container {
+    width: 60%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.order-btn {
+    background: linear-gradient(to right, #c0392b, #e67e22);
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.order-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #e67e22, #c0392b);
+}
+
+/* Контакты */
+.contact-info {
+    text-align: right;
+    padding: 20px;
+}

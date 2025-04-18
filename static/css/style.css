@@ -29,12 +29,6 @@ section {
     width: 90px;
 }
 
-img {
-    width: 300px; /* Ширина */
-    border-radius: 10px; /* Скругленные углы */
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Тень */
-}
-
 
 /* Кнопка заказа */
 .hero-btn {
@@ -64,8 +58,30 @@ img {
     font-size: 19px;
 }
 
+.inter {
+    object-fit: cover; /* Обрезает картинку, сохраняя пропорции */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+.inter:hover {
+    transform: scale(1.05); /* Увеличение */
+    transition: 0.3s ease-in-out; /* Плавность */
+}
+
+
+.cook {
+    object-fit: cover; /* Обрезает картинку, сохраняя пропорции */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Тень */
+}
+
+.cook:hover {
+    transform: scale(1.05); /* Увеличение */
+    transition: 0.3s ease-in-out; /* Плавность */
+}
+
 .about img {
-    width: 45%;
     border-radius: 12px;
     margin: 15px;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
