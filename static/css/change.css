@@ -46,7 +46,7 @@ header {
 /* Блок информации о блюде */
 .dish-info img {
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     border-radius: 12px;
 }
 
@@ -67,17 +67,18 @@ header {
 }
 
 /* Оформление количества порций */
-.quantity-selector {
+.quantity-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 20px;
 }
 
 .quantity-btn {
     background: #b22222;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-size: 20px;
     cursor: pointer;
     border-radius: 6px;
@@ -85,6 +86,15 @@ header {
 
 .quantity-btn:hover {
     background: #d43f3a;
+}
+
+#quantity {
+    font-weight: bold;
+    padding: 5px 15px;
+    min-width: 40px;
+    text-align: center;
+    border: 2px solid #b22222;
+    border-radius: 6px;
 }
 
 /* Кнопки */

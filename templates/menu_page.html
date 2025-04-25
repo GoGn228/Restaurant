@@ -25,25 +25,19 @@
                     <h3>Паста Карбонара</h3>
                     <img src="{{url_for('static', filename='images/carbonara.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
                     <p>Нежная паста с пармезаном, яйцом и беконом.</p>
-                    <form action="/change/">
-                        <button>Добавить в заказ</button>
-                    </form>
+                    <a href="{{ url_for('change', dish='Паста Карбонара') }}" class="custom-btn">Добавить в заказ</a>
                 </div>
                 <div class="menu-item">
                     <h3>Пицца Маргарита</h3>
                     <img src="{{url_for('static', filename='images/pizza.jpg') }}" alt="Пицца Маргарита" width="300" height="300">
                     <p>Классическая пицца с томатами, моцареллой и базиликом.</p>
-                    <form action="/change/">
-                        <button>Добавить в заказ</button>
-                    </form>
+                    <a href="{{ url_for('change', dish='Пицца Маргарита') }}" class="custom-btn">Добавить в заказ</a>
                 </div>
                 <div class="menu-item">
                     <h3>Тирамису</h3>
                     <img src="{{url_for('static', filename='images/tir.jpg') }}" alt="Тирамису" width="auto" height="300">
                     <p>Итальянский десерт с кофе и маскарпоне.</p>
-                    <form action="/change/">
-                        <button>Добавить в заказ</button>
-                    </form>
+                    <a href="{{ url_for('change', dish='Тирамису') }}" class="custom-btn">Добавить в заказ</a>
                 </div>
             </div>
         </section>

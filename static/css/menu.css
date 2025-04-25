@@ -55,7 +55,7 @@ header {
 }
 
 /* Кнопки */
-button {
+a {
     background: linear-gradient(to right, #c0392b, #e67e22);
     padding: 10px;
     border: none;
@@ -65,7 +65,7 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
+a:hover {
     transform: scale(1.05);
 }
 
