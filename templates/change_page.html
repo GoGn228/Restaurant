@@ -25,27 +25,47 @@
 
         <section class="ingredients">
             <h2>Выберите ингредиенты</h2>
-            <div class="ingredient-grid">
-                <label class="ingredient-option"><input type="checkbox"> {{add1[0][0]}} <span>+2 BYN</span></label>
-                <label class="ingredient-option"><input type="checkbox"> {{add2[0][0]}} <span>+1.5 BYN</span></label>
-                <label class="ingredient-option"><input type="checkbox"> {{add3[0][0]}} <span>+1.5 BYN</span></label>
-                <label class="ingredient-option"><input type="checkbox"> {{add4[0][0]}} <span>+1 BYN</span></label>
-                <label class="ingredient-option"><input type="checkbox"> {{add5[0][0]}} <span>+1 BYN</span></label>
-                <label class="ingredient-option"><input type="checkbox"> {{add6[0][0]}} <span>+3 BYN</span></label>
-            </div>
+            <form method="GET" action="{{ url_for('change') }}">
+                <div class="ingredient-grid">
+                    <label class="ingredient-option">
+                        <input type="checkbox" name="ingredientss" value=2 onchange="this.form.submit()">
+                        {{add1[0][0]}} <span>+2 BYN</span>
+                    </label>
+                    <label class="ingredient-option">
+                        <input type="checkbox" name="ingredientss" value=1.5 onchange="this.form.submit()">
+                        {{add2[0][0]}} <span>+1.5 BYN</span>
+                    </label>
+                    <label class="ingredient-option">
+                        <input type="checkbox" name="ingredientss" value=1.5 onchange="this.form.submit()">
+                        {{add3[0][0]}} <span>+1.5 BYN</span>
+                    </label>
+                    <label class="ingredient-option">
+                        <input type="checkbox" name="ingredientss" value=1 onchange="this.form.submit()">
+                        {{add4[0][0]}} <span>+1 BYN</span>
+                    </label>
+                    <label class="ingredient-option">
+                        <input type="checkbox" name="ingredientss" value=1 onchange="this.form.submit()">
+                        {{add5[0][0]}} <span>+1 BYN</span>
+                    </label>
+                    <label class="ingredient-option">
+                        <input type="checkbox" name="ingredientss" value=3 onchange="this.form.submit()">
+                        {{add6[0][0]}} <span>+3 BYN</span>
+                    </label>
+                </div>
+            </form>
         </section>
 
         <section class="quantity">
             <h2>Количество порций</h2>
-            <div class="quantity-container">
-                <a href="{{ url_for('order', quantity=quantity-1) }}" class="quantity-btn">−</a>
-                <span>{{ quantity }}</span>
-                <a href="{{ url_for('order', quantity=quantity+1) }}" class="quantity-btn">+</a>
+            <div class="quantity-selector">
+                <a href="{{ url_for('change',dish=dish, quantity=quantity-1) }}" class="btn">-</a>
+                <h2>{{ quantity }}</h2>
+                <a href="{{ url_for('change',dish=dish, quantity=quantity+1) }}" class="btn">+</a>
             </div>
         </section>
 
         <section class="price">
-            <h2>Итоговая стоимость: XX BYN</h2>
+            <h2>Итоговая стоимость: {{total_price}} BYN</h2>
             <form action="/menu/">
                 <button>Подтвердить заказ</button>
             </form>

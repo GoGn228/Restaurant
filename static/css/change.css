@@ -66,36 +66,48 @@ header {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Оформление количества порций */
-.quantity-container {
+.quantity-selector {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 20px;
+    gap: 6px;
+    justify-content: flex-start; /* Смещаем влево */
+    padding: 6px;
 }
 
-.quantity-btn {
+
+/* Кнопки управления */
+.quantity-selector .btn {
     background: #b22222;
     color: white;
-    border: none;
-    padding: 8px 15px;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.quantity-btn:hover {
-    background: #d43f3a;
-}
-
-#quantity {
+    font-size: 16px;
     font-weight: bold;
-    padding: 5px 15px;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.quantity-selector .btn:hover {
+    background: #d43f3a;
+    transform: scale(1.05);
+}
+
+/* Количество порций */
+.quantity-selector h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3e2f2f;
+    padding: 3px 12px;
     min-width: 40px;
     text-align: center;
     border: 2px solid #b22222;
-    border-radius: 6px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Кнопки */
 button {
