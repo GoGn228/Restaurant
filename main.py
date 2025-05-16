@@ -44,17 +44,20 @@ def change():
     cursor.execute('SELECT add6 FROM food_menu WHERE name=(?)', (dish,))
     add6 = cursor.fetchall()
     cursor.execute('SELECT price FROM food_menu WHERE name=(?)', (dish,))
+    #print("Содержимое session['price']:", session.get("price"))
     price = get_price()
-    selected_ingredients = request.args.getlist("ingredientss")
-    if "price" not in session:
+    ingredients = request.args.get("ingredients", type=int, default=0)
+    #print("Полученные параметры:", request.args)
+    #print("Выбранные ингредиенты (до обработки):", selected_ingredients)
+    if "price" not in session or session["price"] is None:
         session["price"] = get_price() # Сохраняем цену в session
-    print(selected_ingredients, price)
-    base_price = float(price[0][0]) if price and price[0][0] else 0  # Проверяем, есть ли число
-    selected_ingredients = [float(ing) for ing in selected_ingredients if ing.replace('.', '', 1).isdigit()]
-    total_price = price + sum(selected_ingredients)
-    print("Итоговая цена:", total_price)  # Проверяем финальное значение
+    base_price = float(price) if price else 0  # Проверяем, есть ли число
     quantity = request.args.get("quantity", type=int, default=1)
-    return render_template("change_page.html", dish=dish, description=description, img=img, add1=add1, add2=add2, add3=add3, add4=add4, add5=add5, add6=add6, quantity=quantity, total_price=total_price, price=session["price"])
+    total_price = (session["price"]*quantity) + ingredients
+    #print("Цена перед отправкой в шаблон:", session["price"])
+    #print("Содержимое session['price']:", session.get("price"))
+    #print("Total price:", total_price)
+    return render_template("change_page.html", dish=dish, description=description, img=img, add1=add1, add2=add2, add3=add3, add4=add4, add5=add5, add6=add6, quantity=quantity, price=total_price, ingredients=ingredients)
 
 @app.route("/order/")
 def order():

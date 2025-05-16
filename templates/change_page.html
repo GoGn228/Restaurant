@@ -25,34 +25,38 @@
 
         <section class="ingredients">
             <h2>Выберите ингредиенты</h2>
-            <form method="GET" action="{{ url_for('change') }}">
                 <div class="ingredient-grid">
                     <label class="ingredient-option">
-                        <input type="checkbox" name="ingredientss" value=2 onchange="this.form.submit()">
-                        {{add1[0][0]}} <span>+2 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+2) }}" class="btn">Добавить</a>
+                        {{add1[0][0]}} <span>2 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-2) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <input type="checkbox" name="ingredientss" value=1.5 onchange="this.form.submit()">
-                        {{add2[0][0]}} <span>+1.5 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1.5) }}" class="btn">Добавить</a>
+                        {{add2[0][0]}} <span>1.5 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1.5) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <input type="checkbox" name="ingredientss" value=1.5 onchange="this.form.submit()">
-                        {{add3[0][0]}} <span>+1.5 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1.5) }}" class="btn">Добавить</a>
+                        {{add3[0][0]}} <span>1.5 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1.5) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <input type="checkbox" name="ingredientss" value=1 onchange="this.form.submit()">
-                        {{add4[0][0]}} <span>+1 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1) }}" class="btn">Добавить</a>
+                        {{add4[0][0]}} <span>1 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <input type="checkbox" name="ingredientss" value=1 onchange="this.form.submit()">
-                        {{add5[0][0]}} <span>+1 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1) }}" class="btn">Добавить</a>
+                        {{add5[0][0]}} <span>1 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <input type="checkbox" name="ingredientss" value=3 onchange="this.form.submit()">
-                        {{add6[0][0]}} <span>+3 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+3) }}" class="btn">Добавить</a>
+                        {{add6[0][0]}} <span>3 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-3) }}" class="btn">Убрать</a>
                     </label>
                 </div>
-            </form>
         </section>
 
         <section class="quantity">
@@ -65,7 +69,7 @@
         </section>
 
         <section class="price">
-            <h2>Итоговая стоимость: {{total_price}} BYN</h2>
+            <h2>Итоговая стоимость: {{price}} BYN</h2>
             <form action="/menu/">
                 <button>Подтвердить заказ</button>
             </form>
