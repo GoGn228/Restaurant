@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <button class="back-button" onclick="window.history.back();"></button>
         <h1 class="title">Ресторан "Шеф Иван"</h1>
         <div class="logo">
             <img src="{{url_for('static', filename='images/logo.png') }}" alt="Логотип Шеф Иван">
@@ -17,7 +18,7 @@
     <section class="order-container">
         <h2>Оформите ваш заказ</h2>
         <p>Выберите блюда из нашего меню и укажите детали заказа.</p>
-        <form>
+        <form action="/final/">
             <label for="name">Ваше имя:</label>
             <input type="text" id="name" name="name" required>
 
@@ -27,10 +28,11 @@
             <label for="address">Адрес доставки:</label>
             <input type="text" id="address" name="address" required>
 
-            <label for="order-details">Ваш заказ:</label>
-            <textarea id="order-details" name="order-details" placeholder="Напишите здесь свои пожелания..." required></textarea>
+            <label for="order-details"></label>
+            <textarea id="order-details" name="order-details" placeholder="Напишите здесь свои пожелания..."></textarea>
 
-            <button type="submit" class="order-btn">Подтвердить заказ</button>
+            <button class="order-btn">Подтвердить заказ</button>
+
         </form>
     </section>
 

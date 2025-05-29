@@ -1,4 +1,4 @@
-from sys import orig_argv
+#from sys import orig_argv
 from flask import Flask, render_template, request, session
 import json
 import sqlite3
@@ -63,6 +63,14 @@ def change():
 def order():
     return render_template("order_page.html")
 
+@app.route("/final/")
+def final():
+    name = request.args.get("name")
+    phone = request.args.get("phone")
+    address = request.args.get("address")
+    cursor.execute("INSERT INTO food_order (name, phone, address) VALUES (?, ?, ?)", (name, phone, address))
+    con.commit()
+    return render_template("final_page.html")
 
 app.run(debug=True)
 
