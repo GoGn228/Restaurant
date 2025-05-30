@@ -62,6 +62,17 @@ def change():
 def order():
     return render_template("order_page.html")
 
+@app.route("/final/")
+def final():
+    name = request.args.get("name")
+    phone = request.args.get("phone")
+    address = request.args.get("address")
+    dish = request.args.get("dish")
+    quantity = request.args.get("quantity")
+    cursor.execute("INSERT INTO food_order (name, phone, address) VALUES (?, ?, ?)", (name, phone, address))
+    con.commit()
+    return render_template("final_page.html")
+
 
 app.run(debug=True)
 

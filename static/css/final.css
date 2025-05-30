@@ -1,0 +1,40 @@
+.final-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #fff8f0, #f5e0cc);
+    font-family: "Arial", sans-serif;
+}
+
+.final-page h1 {
+    font-size: 34px;
+    color: #b22222;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.final-page p {
+    font-size: 20px;
+    color: #3e2f2f;
+    margin-bottom: 24px;
+}
+
+/* Кнопка "Вернуться на главную" */
+.home-button {
+    background-color: #b22222;
+    color: white;
+    font-size: 20px;
+    padding: 12px 20px;
+    border: 2px solid white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.home-button:hover {
+    background-color: #d43f3a;
+    transform: scale(1.1);
+}

@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Меню – Шеф Иван</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/menu.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
 </head>
 <body>
     <header>
+        <button class="back-button" onclick="window.history.back();"></button>
         <h1 class="title">Меню ресторана "Шеф Иван"</h1>
         <div class="logo">
             <img src="{{url_for('static', filename='images/logo.png') }}" alt="Логотип ресторана">
@@ -47,7 +49,7 @@
             <h2>Ваш заказ:</h2>
             <h3>{{dish}}({{quantity}})</h3>
             <ul id="cart-list"></ul>
-            <form action="/order/">
+            <form dish=dish, quantity=quantity, action="/order/">
                 <button class="confirm-btn">Подтвердить заказ</button>
             </form>
         </aside>
