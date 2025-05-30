@@ -1,4 +1,7 @@
 from sys import orig_argv
+from types import NoneType
+from typing import final
+
 from flask import Flask, render_template, request, session
 import json
 import sqlite3
@@ -15,7 +18,9 @@ def main_page():
 
 @app.route("/menu/")
 def menu():
-    return render_template("menu_page.html")
+    dish = request.args.get("dish")
+    quantity = request.args.get("quantity")
+    return render_template("menu_page.html", dish=dish, quantity=quantity)
 
 @app.route("/change/")
 def change():
@@ -44,19 +49,13 @@ def change():
     cursor.execute('SELECT add6 FROM food_menu WHERE name=(?)', (dish,))
     add6 = cursor.fetchall()
     cursor.execute('SELECT price FROM food_menu WHERE name=(?)', (dish,))
-    #print("Содержимое session['price']:", session.get("price"))
     price = get_price()
     ingredients = request.args.get("ingredients", type=int, default=0)
-    #print("Полученные параметры:", request.args)
-    #print("Выбранные ингредиенты (до обработки):", selected_ingredients)
     if "price" not in session or session["price"] is None:
         session["price"] = get_price() # Сохраняем цену в session
     base_price = float(price) if price else 0  # Проверяем, есть ли число
     quantity = request.args.get("quantity", type=int, default=1)
     total_price = (session["price"]*quantity) + ingredients
-    #print("Цена перед отправкой в шаблон:", session["price"])
-    #print("Содержимое session['price']:", session.get("price"))
-    #print("Total price:", total_price)
     return render_template("change_page.html", dish=dish, description=description, img=img, add1=add1, add2=add2, add3=add3, add4=add4, add5=add5, add6=add6, quantity=quantity, price=total_price, ingredients=ingredients)
 
 @app.route("/order/")

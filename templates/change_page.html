@@ -27,34 +27,34 @@
             <h2>Выберите ингредиенты</h2>
                 <div class="ingredient-grid">
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+2) }}" class="btn">Добавить</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+2, quantity=quantity) }}" class="btn">Добавить</a>
                         {{add1[0][0]}} <span>2 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-2) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-2, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1.5) }}" class="btn">Добавить</a>
-                        {{add2[0][0]}} <span>1.5 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1.5) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+3, quantity=quantity) }}" class="btn">Добавить</a>
+                        {{add2[0][0]}} <span>3 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-3, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1.5) }}" class="btn">Добавить</a>
-                        {{add3[0][0]}} <span>1.5 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1.5) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+3, quantity=quantity) }}" class="btn">Добавить</a>
+                        {{add3[0][0]}} <span>3 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-3, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1) }}" class="btn">Добавить</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1, quantity=quantity) }}" class="btn">Добавить</a>
                         {{add4[0][0]}} <span>1 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1) }}" class="btn">Добавить</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+1, quantity=quantity) }}" class="btn">Добавить</a>
                         {{add5[0][0]}} <span>1 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+3) }}" class="btn">Добавить</a>
-                        {{add6[0][0]}} <span>3 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-3) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+2, final_quantity=quantity) }}" class="btn">Добавить</a>
+                        {{add6[0][0]}} <span>2 BYN</span>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-2, final_quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                 </div>
         </section>
@@ -62,17 +62,15 @@
         <section class="quantity">
             <h2>Количество порций</h2>
             <div class="quantity-selector">
-                <a href="{{ url_for('change',dish=dish, quantity=quantity-1) }}" class="btn">-</a>
+                <a href="{{ url_for('change',dish=dish, quantity=quantity-1, ingredients=ingredients) }}" class="btn">-</a>
                 <h2>{{ quantity }}</h2>
-                <a href="{{ url_for('change',dish=dish, quantity=quantity+1) }}" class="btn">+</a>
+                <a href="{{ url_for('change',dish=dish, quantity=quantity+1, ingredients=ingredients) }}" class="btn">+</a>
             </div>
         </section>
 
         <section class="price">
             <h2>Итоговая стоимость: {{price}} BYN</h2>
-            <form action="/menu/">
-                <button>Подтвердить заказ</button>
-            </form>
+            <a href="{{ url_for('menu', dish=dish, quantity=quantity) }}">Подтвердить</a>
         </section>
     </main>
 

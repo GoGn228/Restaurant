@@ -66,6 +66,17 @@ header {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.ingredient-option span:hover {
+    text-decoration: underline; /* Добавляет подчеркивание только при наведении */
+    color: #d43f3a; /* Легкий цветовой акцент */
+    transform: scale(1.05);
+}
+
+.ingredient-option a {
+    text-decoration: none; !important/* Убираем подчеркивание */
+}
+
+
 .quantity-selector {
     display: flex;
     align-items: center;
@@ -125,5 +136,21 @@ button:hover {
 }
 
 .confirm-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Кнопки */
+a {
+    background: linear-gradient(to right, #d43f3a);
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none; !important/* Убираем подчеркивание */
+}
+
+a:hover {
     transform: scale(1.05);
 }
