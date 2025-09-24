@@ -1,5 +1,5 @@
 body {
-    font-family: "Cormorant Garamond", serif;
+    font-family: 'Segoe UI', sans-serif;
     background-color: #f5efe6;
     color: #3e2f2f;
     margin: 0;
@@ -30,26 +30,50 @@ section {
 }
 
 
-/* Кнопка заказа */
 .hero-btn {
-    text-align: right;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px; /* расстояние между кнопками */
 }
 
+/* Общий стиль для кнопок меню */
+.menu-btn {
+  background: linear-gradient(to right, #c0392b, #e67e22);
+  padding: 18px 40px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 12px;
+  transition: 0.3s;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(to right, #e67e22, #c0392b);
+}
+
+/* Стиль для кнопки заказа */
 .order-btn {
-    background: linear-gradient(to right, #c0392b, #e67e22);
-    padding: 18px 40px;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: 0.3s;
-    border: none;
-    color: white;
+  background: linear-gradient(to right, #c0392b, #e67e22);
+  padding: 18px 40px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 12px;
+  transition: 0.3s;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 .order-btn:hover {
-    transform: scale(1.1);
-    background: linear-gradient(to right, #e67e22, #c0392b);
+  transform: scale(1.1);
+  background: linear-gradient(to right, #e67e22, #c0392b);
 }
+
 
 /* Сдержанный фон */
 .about {
@@ -97,4 +121,15 @@ section {
     font-size: 20px;
     color: #7b4f3f;
     text-align: left;
+}
+
+/* Футер */
+footer {
+    background-color: #f5efe6;
+    padding: 20px;
+    font-size: 19px;
+}
+
+.footer-content p {
+  margin: 4px 0;
 }

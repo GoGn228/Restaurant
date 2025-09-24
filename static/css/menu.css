@@ -1,5 +1,5 @@
 body {
-    font-family: "Cormorant Garamond", serif;
+    font-family: 'Segoe UI', sans-serif;
     background-color: #f5efe6;
     color: #3e2f2f;
     margin: 0;
@@ -30,7 +30,7 @@ header {
     width: 90px;
 }
 
-/* Контейнер меню */
+/* Основная раскладка меню */
 .menu-layout {
     display: flex;
     gap: 40px;
@@ -38,7 +38,7 @@ header {
     padding: 40px;
 }
 
-/* Меню слева */
+/* Контейнер с заголовком и колонками */
 .menu-container {
     flex: 2;
     background: rgba(255, 255, 255, 0.9);
@@ -46,16 +46,59 @@ header {
     border-radius: 12px;
 }
 
-.menu-item img {
-    object-fit: cover; /* Обрезает картинку, сохраняя пропорции */
-    border-radius: 10px; /* Скругленные углы */
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Тень */
+/* Обёртка для двух колонок */
+.menu-columns {
+    display: flex;
+    gap: 40px;
 }
 
-.menu-item img:hover {
-    transform: scale(1.05); /* Увеличение */
+/* Левая и правая колонка */
+.menu-left, .menu-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Блок одного блюда */
+.menu-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Картинка блюда */
+.menu-item img {
+    object-fit: cover; /* Обрезает картинку, сохраняя пропорции */
+    border-radius: 12px; /* Скругленные углы */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Тень */
     transition: 0.3s ease-in-out; /* Плавность */
 }
+
+/* Эффект при наведении */
+.menu-item img:hover {
+    transform: scale(1.05); /* Увеличение */
+}
+
+/* Кнопка добавления */
+.custom-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff6b00;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+}
+
+.custom-btn:hover {
+    background-color: #e65c00;
+}
+
 
 /* Корзина справа */
 .cart-container {
@@ -128,4 +171,27 @@ a:hover {
 .back-button:hover {
     border-color: #f5f5f5; /* Чуть мягче при наведении */
     transform: scale(1.1);
+}
+
+/* Контактный блок */
+.contact-info {
+    text-align: right;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 20px;
+    color: #7b4f3f;
+    text-align: left;
+}
+
+/* Футер */
+footer {
+    background-color: #f5efe6;
+    padding: 20px;
+    font-size: 19px;
+}
+
+.footer-content p {
+  margin: 4px 0;
 }

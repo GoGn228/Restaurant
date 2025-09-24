@@ -17,39 +17,91 @@
     </header>
 
     <main class="menu-layout">
-        <!-- Меню слева -->
         <section class="menu-container">
             <h2>Наше изысканное меню</h2>
             <p>Насладитесь лучшими блюдами итальянской кухни.</p>
 
             <div class="menu-items">
-                <div class="menu-item">
-                    <h3>Паста Карбонара</h3>
-                    <img src="{{url_for('static', filename='images/carbonara.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
-                    <p>Нежная паста с пармезаном, яйцом и беконом.</p>
-                    <a href="{{ url_for('change', dish='Паста Карбонара') }}" class="custom-btn">Добавить в заказ</a>
+                <div class="menu-left">
+                    <div class="menu-item">
+                        <h3>Паста Карбонара</h3>
+                        <img src="{{url_for('static', filename='images/carbonara.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+                        <p>Нежная паста с пармезаном, яйцом и беконом.</p>
+                        <a href="{{ url_for('change', dish='Паста Карбонара') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Пицца Маргарита</h3>
+                        <img src="{{url_for('static', filename='images/pizza.jpg') }}" alt="Пицца Маргарита" width="300" height="300">
+                        <p>Классическая пицца с томатами, моцареллой и базиликом.</p>
+                        <a href="{{ url_for('change', dish='Пицца Маргарита') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Тирамису</h3>
+                        <img src="{{url_for('static', filename='images/tir.jpg') }}" alt="Тирамису" width="300" height="300">
+                        <p>Итальянский десерт с кофе и маскарпоне.</p>
+                        <a href="{{ url_for('change', dish='Тирамису') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Салат Цезарь</h3>
+                        <img src="{{ url_for('static', filename='images/salatos.jpg') }}" alt="Салат Цезарь" width="300" height="300">
+                        <p>Хрустящий салат с курицей, пармезаном и соусом Цезарь.</p>
+                        <a href="{{ url_for('change', dish='Салат Цезарь') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+
+                    <div class="menu-item">
+                        <h3>Форель на гриле</h3>
+                        <img src="{{ url_for('static', filename='images/forel.jpg') }}" alt="Форель на гриле" width="300" height="300">
+                        <p>Свежая рыба, приготовленная на углях с лимоном и травами.</p>
+                        <a href="{{ url_for('change', dish='Форель на гриле') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <h3>Пицца Маргарита</h3>
-                    <img src="{{url_for('static', filename='images/pizza.jpg') }}" alt="Пицца Маргарита" width="300" height="300">
-                    <p>Классическая пицца с томатами, моцареллой и базиликом.</p>
-                    <a href="{{ url_for('change', dish='Пицца Маргарита') }}" class="custom-btn">Добавить в заказ</a>
-                </div>
-                <div class="menu-item">
-                    <h3>Тирамису</h3>
-                    <img src="{{url_for('static', filename='images/tir.jpg') }}" alt="Тирамису" width="auto" height="300">
-                    <p>Итальянский десерт с кофе и маскарпоне.</p>
-                    <a href="{{ url_for('change', dish='Тирамису') }}" class="custom-btn">Добавить в заказ</a>
+
+                <!-- Правая колонка -->
+                <div class="menu-right">
+                    <div class="menu-item">
+                        <h3>Стейк Рибай</h3>
+                        <img src="{{ url_for('static', filename='images/stayk.jpg') }}" alt="Стейк Рибай" width="300" height="300">
+                        <p>Сочный стейк средней прожарки с перечным соусом.</p>
+                        <a href="{{ url_for('change', dish='Стейк Рибай') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+
+                    <div class="menu-item">
+                        <h3>Томатный суп</h3>
+                        <img src="{{ url_for('static', filename='images/tomat.jpg') }}" alt="Томатный суп" width="300" height="300">
+                        <p>Нежный крем-суп из томатов с базиликом и гренками.</p>
+                        <a href="{{ url_for('change', dish='Томатный суп') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+
+                    <div class="menu-item">
+                        <h3>Паста с песто</h3>
+                        <img src="{{ url_for('static', filename='images/pasta.jpg') }}" alt="Паста с песто" width="300" height="300">
+                        <p>Ароматная паста с соусом песто, кедровыми орешками и пармезаном.</p>
+                        <a href="{{ url_for('change', dish='Паста с песто') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
+
+                    <div class="menu-item">
+                        <h3>Чизкейк Нью-Йорк</h3>
+                        <img src="{{ url_for('static', filename='images/cheese.jpg') }}" alt="Чизкейк Нью-Йорк" width="300" height="300">
+                        <p>Классический чизкейк с ванилью и клубничным соусом.</p>
+                        <a href="{{ url_for('change', dish='Чизкейк Нью-Йорк') }}" class="custom-btn">Добавить в заказ</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Корзина справа с кнопкой подтверждения -->
+        <!-- Справа: корзина -->
         <aside class="cart-container">
             <h2>Ваш заказ:</h2>
-            <h3>{{dish}}({{quantity}})</h3>
-            <ul id="cart-list"></ul>
-            <form dish=dish, quantity=quantity, action="/order/">
+            {% if cart %}
+                <ul>
+                    {% for dish, quantity in cart.items() %}
+                        <li>{{ dish }} ({{ quantity }})</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Корзина пуста</p>
+            {% endif %}
+            <form method="post" action="/confirm">
                 <button class="confirm-btn">Подтвердить заказ</button>
             </form>
         </aside>
@@ -60,6 +112,9 @@
             <p>📍 Адрес: ул. Центральная, 12, Минск</p>
             <p>📞 Телефон: +375 29 123-45-67</p>
             <p>📧 Email: info@shefivan.by</p>
+        </div>
+        <div class="quote">
+            <p>"Вкус Италии в каждом мгновении"</p>
         </div>
     </footer>
 </body>

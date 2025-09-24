@@ -19,20 +19,15 @@
     <section class="order-container">
         <h2>Оформите ваш заказ</h2>
         <p>Выберите блюда из нашего меню и укажите детали заказа.</p>
-        <form dish=dish, quantity=quantity, action="/final/">
-            <label for="name">Ваше имя:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="phone">Телефон:</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="address">Адрес доставки:</label>
-            <input type="text" id="address" name="address" required>
-
-            <label for="order-details">Ваш заказ:</label>
-            <textarea id="order-details" name="order-details" placeholder="Напишите здесь свои пожелания..."></textarea>
-
-            <button type="submit" class="order-btn">Подтвердить заказ</button>
+       <form method="post" action="/final/">
+            <input type="hidden" name="table_id" value="{{ table_id }}">
+            <label>Имя:</label>
+            <input type="text" name="name" required>
+            <label>Телефон:</label>
+            <input type="tel" name="phone" required>
+            <label>Адрес:</label>
+            <input type="text" name="address" required>
+            <button type="submit" class="order-btn">Сделать заказ</button>
         </form>
     </section>
 
