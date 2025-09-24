@@ -142,7 +142,7 @@ def resFinal():
     return render_template("final_page.html")
 
 
-app.run(debug=True)
+#app.run(debug=True)
 
 # <ul>
 #    {% for id, dish, quantity, price in cart %}
