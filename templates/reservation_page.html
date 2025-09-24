@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Бронирование столика | Шеф Иван</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reservation.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+
+  <!-- Шапка -->
+    <header>
+        <button class="back-button" onclick="window.history.back();"></button>
+        <h1 class="title">Ресторан "Шеф Иван"</h1>
+        <div class="logo">
+            <img src="{{url_for('static', filename='images/logo.png') }}" alt="Логотип ресторана">
+        </div>
+    </header>
+
+    <!-- Основной блок -->
+    <main class="reservation-page">
+        <h2 class="page-heading">Выберите столик для бронирования</h2>
+        <div class="table-grid">
+            {% for table in tables %}
+                {% if table[3] == 1 %}
+                    <div class="table reserved">
+                        <span class="tooltip">Стол №{{ table[0] }}<br>{{ table[1] }}, {{ table[2] }} мест<br>Занят</span>
+                    </div>
+                {% else %}
+                    <a href="/booking?table={{ table[0] }}" class="table">
+                        <span class="tooltip">Стол №{{ table[0] }}<br>{{ table[1] }}, {{ table[2] }} мест</span>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>📍 Адрес: ул. Центральная, 12, Минск</p>
+            <p>📞 Телефон: +375 29 123-45-67</p>
+            <p>📧 Email: info@shefivan.by</p>
+        </div>
+        <div class="quote">
+            <p>"Вкус Италии в каждом мгновении"</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectTable(el) {
+        const id = el.dataset.id;
+        if (el.classList.contains('reserved')) {
+          alert('Этот столик уже забронирован.');
+          return;
+        }
+        window.location.href = `booking.html?table=${id}`;
+      }
+    </script>
+
+</body>
+</html>

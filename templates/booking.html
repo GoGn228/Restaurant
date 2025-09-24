@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ – Шеф Иван</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/order.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="window.history.back();"></button>
+        <h1 class="title">Ресторан "Шеф Иван"</h1>
+        <div class="logo">
+            <img src="{{url_for('static', filename='images/logo.png') }}" alt="Логотип Шеф Иван">
+        </div>
+    </header>
+
+    <section>
+      <h2>Вы выбрали стол №{{ table_id }}</h2>
+        <form method="post" action="/confirm">
+            <input type="hidden" name="table_id" value="{{ table_id }}">
+            <label>Имя:</label>
+            <input type="text" name="name" required>
+            <label>Дата:</label>
+            <input type="date" name="date" required>
+            <label>Время:</label>
+            <input type="time" name="time" required>
+            <button type="submit" class="order-btn">Забронировать</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <p>📍 Адрес: ул. Центральная, 12, Минск</p>
+            <p>📞 Телефон: +375 29 123-45-67</p>
+            <p>📧 Email: info@shefivan.by</p>
+        </div>
+    </footer>
+</body>
+</html>

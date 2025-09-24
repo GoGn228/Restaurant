@@ -21,8 +21,8 @@
     <main class="full-page-layout">
         <section class="dish-info">
             <h2>{{dish}}</h2> <!-- Название блюда -->
-            <img src="{{url_for('static', filename=img[0][0]) }}" alt="{{dish}}">
-            <p>{{description[0][0]}}</p> <!-- Описание, которое ты добавишь -->
+            <img src="{{url_for('static', filename=img[0]) }}" alt="{{dish}}">
+            <p>{{description[0]}}</p> <!-- Описание, которое ты добавишь -->
         </section>
 
         <section class="ingredients">
@@ -72,7 +72,7 @@
 
         <section class="price">
             <h2>Итоговая стоимость: {{price}} BYN</h2>
-            <a href="{{ url_for('menu', dish=dish, quantity=quantity) }}">Подтвердить</a>
+            <a href="{{ url_for('add_to_cart', dish=dish, quantity=quantity, ingredients=ingredients, price=price) }}">Подтвердить</a>
         </section>
     </main>
 

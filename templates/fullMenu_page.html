@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Меню | Шеф Иван</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/fullMenu.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <button class="back-button" onclick="window.history.back();"></button>
+    <h1 class="site-title">Шеф Иван</h1>
+    <div class="logo">
+        <img src="{{url_for('static', filename='images/logo.png') }}" alt="Логотип ресторана">
+    </div>
+  </header>
+
+  <main>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/carbonara.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Паста Карбонара</h3>
+          <p>Идеальное блюдо с кремом, яйцом и беконом.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/pizza.jpg') }}" alt="Пицца Маргарита" width="300" height="300">
+        <div class="info">
+          <h3>Пицца Маргарита</h3>
+          <p>Классическая пицца с томатами, моцареллой и базиликом.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/tomat.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Томатный суп</h3>
+          <p>Нежный крем-суп из томатов с базиликом и гренками.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/salatos.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Салат Цезарь</h3>
+          <p>Хрустящий салат с курицей, пармезаном и соусом Цезарь.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/stayk.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Стейк Рибай</h3>
+          <p>Сочный стейк средней прожарки с перечным соусом.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/tir.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Тирамису</h3>
+          <p>Итальянский десерт с маскарпоне, кофе и какао.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/forel.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Форель на гриле</h3>
+          <p>Свежая рыба, приготовленная на углях с лимоном и травами.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/pasta.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Паста с песто</h3>
+          <p>Ароматная паста с соусом песто, кедровыми орешками и пармезаном.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="{{url_for('static', filename='images/cheese.jpg') }}" alt="Паста Карбонара" width="auto" height="300">
+        <div class="info">
+          <h3>Чизкейк Нью-Йорк</h3>
+          <p>Классический чизкейк с ванилью и клубничным соусом.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>📍 Адрес: ул. Центральная, 12, Минск</p>
+            <p>📞 Телефон: +375 29 123-45-67</p>
+            <p>📧 Email: info@shefivan.by</p>
+        </div>
+        <div class="quote">
+            <p>"Вкус Италии в каждом мгновении"</p>
+        </div>
+    </footer>
+
+</body>
+</html>

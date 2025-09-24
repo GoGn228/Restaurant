@@ -15,63 +15,72 @@ def main_page():
 
 @app.route("/menu/")
 def menu():
-    cart = session.get('cart', {})  # получаем корзину из session
-    return render_template("menu_page.html", cart=cart)
-
-@app.route("/change/")
-def change():
-    dish = request.args.get("dish")
     conn = sqlite3.connect('food.db')
     cursor = conn.cursor()
-    def get_price():
-        cursor.execute("SELECT price FROM food_menu WHERE name = ?", (dish,))
-        price = cursor.fetchone()
-        return price[0] if price else 0  # Гарантируем, что вернётся число
-    cursor.execute('SELECT description FROM food_menu WHERE name=(?)', (dish,))
-    description = cursor.fetchall()
-    cursor.execute('SELECT img FROM food_menu WHERE name=(?)', (dish,))
-    img = cursor.fetchall()
-    cursor.execute('SELECT add1 FROM food_menu WHERE name=(?)', (dish,))
-    add1 = cursor.fetchall()
-    cursor.execute('SELECT add2 FROM food_menu WHERE name=(?)', (dish,))
-    add2 = cursor.fetchall()
-    cursor.execute('SELECT add3 FROM food_menu WHERE name=(?)', (dish,))
-    add3 = cursor.fetchall()
-    cursor.execute('SELECT add4 FROM food_menu WHERE name=(?)', (dish,))
-    add4 = cursor.fetchall()
-    cursor.execute('SELECT add5 FROM food_menu WHERE name=(?)', (dish,))
-    add5 = cursor.fetchall()
-    cursor.execute('SELECT add6 FROM food_menu WHERE name=(?)', (dish,))
-    add6 = cursor.fetchall()
-    cursor.execute('SELECT price FROM food_menu WHERE name=(?)', (dish,))
-    price = get_price()
-    ingredients = request.args.get("ingredients", type=int, default=0)
-    if "price" not in session or session["price"] is None:
-        session["price"] = get_price() # Сохраняем цену в session
-    base_price = float(price) if price else 0  # Проверяем, есть ли число
-    quantity = request.args.get("quantity", type=int, default=1)
-    total_price = (session["price"]*quantity) + ingredients
-    return render_template("change_page.html", dish=dish, description=description, img=img, add1=add1, add2=add2, add3=add3, add4=add4, add5=add5, add6=add6, quantity=quantity, price=total_price, ingredients=ingredients)
+    cursor.execute("SELECT id, dish, quantity, total_price FROM cart")
+    cart = cursor.fetchall()
+    total = sum(item[3] or 0 for item in cart)
+    conn.close()
+    return render_template("menu_page.html", cart=cart, total=total)
 
-@app.route('/add', methods=['POST'])
-def add():
-    dish = request.form['dish']
-    quantity = int(request.form['quantity'])
-    # Инициализируем корзину, если её нет
-    if 'cart' not in session:
-        session['cart'] = {}
+@app.route('/change')
+def change():
+    dish = request.args.get('dish')
+    quantity = int(request.args.get('quantity', 1))
+    ingredients = int(request.args.get('ingredients', 0))
+    conn = sqlite3.connect('food.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT description FROM dishes WHERE name=?", (dish,))
+    description = cursor.fetchone()
+    cursor.execute("SELECT image FROM dishes WHERE name=?", (dish,))
+    img = cursor.fetchone()
+    cursor.execute("SELECT name FROM ingredients ORDER BY id")
+    add_names = cursor.fetchall()
+    base_price = cursor.execute("SELECT base_price FROM dishes WHERE name=?", (dish,)).fetchone()[0]
+    price = base_price * quantity + ingredients
+    conn.close()
+    return render_template("change_page.html",
+                           dish=dish,
+                           quantity=quantity,
+                           ingredients=ingredients,
+                           price=price,
+                           description=description,
+                           img=img,
+                           add1=add_names[0:1],
+                           add2=add_names[1:2],
+                           add3=add_names[2:3],
+                           add4=add_names[3:4],
+                           add5=add_names[4:5],
+                           add6=add_names[5:6])
 
-    cart = session['cart']
-    # Если блюдо уже есть — увеличиваем количество
-    if dish in cart:
-        cart[dish] += quantity
-    else:
-        cart[dish] = quantity
-    session['cart'] = cart  # сохраняем обратно
+@app.route('/add_to_cart')
+def add_to_cart():
+    dish = request.args.get('dish')
+    quantity = int(request.args.get('quantity'))
+    ingredients = int(request.args.get('ingredients'))
+
+    conn = sqlite3.connect('food.db')
+    cursor = conn.cursor()
+    base_price = cursor.execute("SELECT base_price FROM dishes WHERE name=?", (dish,)).fetchone()[0]
+    total_price = base_price * quantity + ingredients
+
+    cursor.execute("INSERT INTO cart (dish, quantity, ingredients, total_price) VALUES (?, ?, ?, ?)",
+                   (dish, quantity, ingredients, total_price))
+    conn.commit()
+    conn.close()
+    return redirect('/menu/')
+
+@app.route('/remove/<int:id>')
+def remove(id):
+    conn = sqlite3.connect('food.db')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM orders WHERE id=?", (id,))
+    conn.commit()
+    conn.close()
     return redirect('/menu/')
 
 
-@app.route("/order/")
+@app.route("/order/", methods=['POST'])
 def order():
     return render_template("order_page.html")
 
@@ -113,14 +122,20 @@ def final():
     name = request.form['name']
     phone = request.form['phone']
     address = request.form['address']
-    #dish = request.form['dish']
-    #quantity = request.form['quantity']
     conn = sqlite3.connect('food.db')
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO food_order (name, phone, address) VALUES (?, ?, ?)", (name, phone, address))
+    cursor.execute("SELECT dish, quantity, ingredients, total_price FROM cart")
+    cart = cursor.fetchall()
+    for dish, quantity, ingredients, total_price in cart:
+        cursor.execute("""
+            INSERT INTO orders (dish, quantity, ingredients, total_price)
+            VALUES (?, ?, ?, ?)
+        """, (dish, quantity, ingredients, total_price))
+
+    cursor.execute("DELETE FROM cart")  # очищаем корзину
     conn.commit()
     conn.close()
-    return render_template("final_page.html")
+    return render_template("final_page.html", name=name)
 
 @app.route("/resFinal/", methods=['POST'])
 def resFinal():
@@ -129,5 +144,10 @@ def resFinal():
 
 app.run(debug=True)
 
-
-#<button onclick="addToCart('Паста Карбонара')">Добавить в заказ</button>
+# <ul>
+#    {% for id, dish, quantity, price in cart %}
+#        <li>{{ dish }} ({{ quantity }}) — {{ price }} BYN
+#            <a href="{{ url_for('remove', id=id) }}" class="remove-btn">✕</a>
+#        </li>
+#    {% endfor %}
+# </ul>
