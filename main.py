@@ -195,8 +195,6 @@ def admin():
                            forecast_tomorrow = forecast_tomorrow)
 
 
-app.run(debug=True)
-
 # <ul>
 #    {% for id, dish, quantity, price in cart %}
 #        <li>{{ dish }} ({{ quantity }}) — {{ price }} BYN
