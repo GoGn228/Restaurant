@@ -132,7 +132,7 @@ def final():
         cursor.execute("""
             INSERT INTO orders (dish, quantity, ingredients, total_price, order_time)
             VALUES (?, ?, ?, ?, ?)
-        """, (dish, quantity, ingredients, total_price))
+        """, (dish, quantity, ingredients, total_price, now))
 
     cursor.execute("DELETE FROM cart")  # очищаем корзину
     conn.commit()
