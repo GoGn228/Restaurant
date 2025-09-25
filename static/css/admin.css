@@ -1,0 +1,120 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5efe6;
+    color: #3e2f2f;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #b22222, #d43f3a);
+    color: white;
+    padding: 20px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* Контейнер */
+.admin-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Блоки секций */
+.admin-block {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.admin-block h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Выручка */
+.admin-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 10px;
+}
+
+/* Список популярных блюд */
+.admin-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.admin-list li {
+    padding: 8px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Таблицы */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 15px;
+}
+
+.admin-table thead {
+    background-color: #f0f0f0;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.back-button {
+    width: 30px;
+    height: 30px;
+    background: #b22222 !important; /* Принудительно задаём красный цвет */
+    background-color: #b22222; /* Фирменный красный цвет */
+    border: 4px solid white;
+    background-clip: padding-box; /* Обрезает фон, сохраняя белый цвет */
+    border-radius: 50%; /* Круглая форма */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+/* Стрелка внутри */
+.back-button::before {
+    content: "←"; /* Юникод-стрелка */
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Эффект при наведении */
+.back-button:hover {
+    border-color: #f5f5f5; /* Чуть мягче при наведении */
+    transform: scale(1.1);
+}

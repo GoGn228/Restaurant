@@ -2,9 +2,10 @@ from sys import orig_argv
 from types import NoneType
 from typing import final
 
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, send_file
 import json
 import sqlite3
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key_123"
@@ -122,14 +123,15 @@ def final():
     name = request.form['name']
     phone = request.form['phone']
     address = request.form['address']
+    now = datetime.now()
     conn = sqlite3.connect('food.db')
     cursor = conn.cursor()
     cursor.execute("SELECT dish, quantity, ingredients, total_price FROM cart")
     cart = cursor.fetchall()
     for dish, quantity, ingredients, total_price in cart:
         cursor.execute("""
-            INSERT INTO orders (dish, quantity, ingredients, total_price)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO orders (dish, quantity, ingredients, total_price, order_time)
+            VALUES (?, ?, ?, ?, ?)
         """, (dish, quantity, ingredients, total_price))
 
     cursor.execute("DELETE FROM cart")  # очищаем корзину
@@ -141,8 +143,59 @@ def final():
 def resFinal():
     return render_template("final_page.html")
 
+@app.route('/admin_login', methods=['POST'])
+def admin_login():
+    password = request.form.get('password')
+    if password == 'demo2025':
+        return redirect('/admin')
+    return "Неверный пароль"
 
-#app.run(debug=True)
+@app.route('/admin')
+def admin():
+    conn = sqlite3.connect('food.db')
+    cursor = conn.cursor()
+
+    # История заказов
+    cursor.execute("SELECT dish, quantity, total_price FROM orders ORDER BY id DESC")
+    orders = cursor.fetchall()
+
+    # Статистика
+    cursor.execute("SELECT dish, COUNT(*) as count FROM orders GROUP BY dish ORDER BY count DESC LIMIT 5")
+    top_dishes = cursor.fetchall()
+
+    cursor.execute("SELECT SUM(total_price) FROM orders")
+    revenue = cursor.fetchone()[0] or 0
+
+    # Заказы на доставку
+    cursor.execute("SELECT name, phone, address FROM food_order ORDER BY id DESC")
+    deliveries = cursor.fetchall()
+
+    # Заказы за сегодня
+    today = datetime.now().date()
+    cursor.execute("SELECT COUNT(*) FROM orders WHERE DATE(order_time) = ?", (today,))
+    orders_today = cursor.fetchone()[0]
+
+    # Заказы за последние 30 дней
+    month_ago = today - timedelta(days=30)
+    cursor.execute("SELECT COUNT(*) FROM orders WHERE DATE(order_time) >= ?", (month_ago,))
+    orders_month = cursor.fetchone()[0]
+
+    # Прогноз: если тренд сохранится
+    avg_per_day = orders_month / 30
+    forecast_tomorrow = round(avg_per_day)
+
+    conn.close()
+    return render_template("admin_panel.html",
+                           orders=orders,
+                           top_dishes=top_dishes,
+                           revenue=revenue,
+                           deliveries=deliveries,
+                           orders_today = orders_today,
+                           orders_month = orders_month,
+                           forecast_tomorrow = forecast_tomorrow)
+
+
+app.run(debug=True)
 
 # <ul>
 #    {% for id, dish, quantity, price in cart %}

@@ -133,3 +133,69 @@ footer {
 .footer-content p {
   margin: 4px 0;
 }
+
+/* Кнопка вызова админки */
+.admin-trigger {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.admin-trigger:hover {
+  background-color: #666;
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Контент модального окна */
+.modal form {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal input[type="password"] {
+  width: 80%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #218838;
+}

@@ -18,6 +18,14 @@
     <section class="hero">
         <h2>Настоящая атмосфера Италии</h2>
         <p>Элегантный интерьер, изысканное обслуживание и искреннее гостеприимство.</p>
+        <button onclick="document.getElementById('adminModal').style.display='block'" class="admin-trigger">🔧</button>
+        <div id="adminModal" class="modal">
+            <form method="post" action="/admin_login">
+                <label for="password">Введите пароль:</label>
+                <input type="password" name="password" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
         <div class="hero-btn">
             <form action="/reservation/">
                 <button class="menu-btn">Забронировать столик</button>

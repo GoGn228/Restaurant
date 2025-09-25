@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ панель</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <header>
+        <a href="/" class="back-button"></a>
+        <h1 class="page-title">🔧 Админ панель ресторана</h1>
+    </header>
+
+    <main class="admin-container">
+        <section class="admin-block">
+            <h2>💰 Общая выручка</h2>
+            <div class="admin-value">{{ revenue }} BYN</div>
+        </section>
+
+        <section class="admin-block">
+            <h2>🔥 Топ-5 популярных блюд</h2>
+            <ul class="admin-list">
+                {% for dish, count in top_dishes %}
+                    <li>{{ dish }} — {{ count }} заказов</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="admin-block">
+            <h2>📦 История заказов</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Блюдо</th>
+                        <th>Кол-во</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dish, quantity, price in orders %}
+                        <tr>
+                            <td>{{ dish }}</td>
+                            <td>{{ quantity }}</td>
+                            <td>{{ price }} BYN</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="admin-block">
+            <h2>🚚 Заказы на доставку</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Телефон</th>
+                        <th>Адрес</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, phone, address in deliveries %}
+                        <tr>
+                            <td>{{ name }}</td>
+                            <td>{{ phone }}</td>
+                            <td>{{ address }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="admin-block">
+            <h2>📅 Заказы по времени</h2>
+            <ul class="admin-list">
+                <li>Сегодня: {{ orders_today }} заказов</li>
+                <li>За последние 30 дней: {{ orders_month }} заказов</li>
+                <li>📈 Прогноз на завтра: ~{{ forecast_tomorrow }} заказов</li>
+            </ul>
+        </section>
+
+    </main>
+</body>
+</html>
