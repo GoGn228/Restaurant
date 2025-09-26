@@ -54,9 +54,9 @@
                         <a href="{{ url_for('change',dish=dish, ingredients=ingredients-1, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                     <label class="ingredient-option">
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+2, final_quantity=quantity) }}" class="btn">Добавить</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients+2, quantity=quantity) }}" class="btn">Добавить</a>
                         {{add6[0][0]}} <span>2 BYN</span>
-                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-2, final_quantity=quantity) }}" class="btn">Убрать</a>
+                        <a href="{{ url_for('change',dish=dish, ingredients=ingredients-2, quantity=quantity) }}" class="btn">Убрать</a>
                     </label>
                 </div>
         </section>

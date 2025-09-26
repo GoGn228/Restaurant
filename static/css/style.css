@@ -199,3 +199,34 @@ footer {
 .modal button:hover {
   background-color: #218838;
 }
+
+.admin-access {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.admin-button {
+  background-color: #2a6ebb;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.admin-button:hover {
+  background-color: #1f4e99;
+}
+
+.admin-hint {
+  font-size: 0.95em;
+  color: #444;
+  background-color: #eef;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-left: 4px solid #2a6ebb;
+}
+

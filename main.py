@@ -52,7 +52,8 @@ def change():
                            add3=add_names[2:3],
                            add4=add_names[3:4],
                            add5=add_names[4:5],
-                           add6=add_names[5:6])
+                           add6=add_names[5:6],
+                           add7=add_names[6:7])
 
 @app.route('/add_to_cart')
 def add_to_cart():
@@ -194,6 +195,7 @@ def admin():
                            orders_month = orders_month,
                            forecast_tomorrow = forecast_tomorrow)
 
+#app.run(debug=True)
 
 # <ul>
 #    {% for id, dish, quantity, price in cart %}
