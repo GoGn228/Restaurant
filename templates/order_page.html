@@ -24,7 +24,12 @@
             <label>Имя:</label>
             <input type="text" name="name" required>
             <label>Телефон:</label>
-            <input type="tel" name="phone" required>
+            <input type="tel"
+                name="phone"
+                placeholder="+375 29 123 45 67"
+                pattern="^\+375\s?(25|29|33|44)\s?\d{3}\s?\d{2}\s?\d{2}$"
+                inputmode="numeric"
+                required>
             <label>Адрес:</label>
             <input type="text" name="address" required>
             <button type="submit" class="order-btn">Сделать заказ</button>

@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, session, redirect, send_file
 import json
 import sqlite3
 from datetime import datetime, timedelta
+import re
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key_123"
@@ -123,6 +124,9 @@ def confirm():
 def final():
     name = request.form['name']
     phone = request.form['phone']
+    pattern = r"^\+375\s?(25|29|33|44)\s?\d{3}\s?\d{2}\s?\d{2}$"
+    if not re.match(pattern, phone):
+        return "Неверный формат телефона"
     address = request.form['address']
     now = datetime.now()
     conn = sqlite3.connect('food.db')
@@ -130,12 +134,11 @@ def final():
     cursor.execute("SELECT dish, quantity, ingredients, total_price FROM cart")
     cart = cursor.fetchall()
     for dish, quantity, ingredients, total_price in cart:
-        cursor.execute("""
-            INSERT INTO orders (dish, quantity, ingredients, total_price, order_time)
-            VALUES (?, ?, ?, ?, ?)
-        """, (dish, quantity, ingredients, total_price, now))
-
+        cursor.execute("INSERT INTO orders (dish, quantity, ingredients, total_price, order_time) VALUES (?, ?, ?, ?, ?)",
+                       (dish, quantity, ingredients, total_price, now))
     cursor.execute("DELETE FROM cart")  # очищаем корзину
+    cursor.execute("INSERT INTO food_order (name, phone, address) VALUES (?, ?, ?)",
+                   (name, phone, address))
     conn.commit()
     conn.close()
     return render_template("final_page.html", name=name)
